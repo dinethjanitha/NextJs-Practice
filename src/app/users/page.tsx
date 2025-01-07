@@ -1,8 +1,16 @@
+import { error, log } from 'console'
 import React from 'react'
+import UserTable from './UserTable';
 
-const UserPage = () => {
+
+
+const UserPage = async () => {
+
   return (
-    <div>UserPage</div>
+    <div>
+      <h1>Users</h1>
+      <UserTable/>
+    </div>
   )
 }
 

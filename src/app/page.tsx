@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import ProductCard from "./components/ProductCard";
 export default function Home() {
 
 
@@ -10,8 +12,7 @@ export default function Home() {
   const num = 1;
   return (
     <div>
-      <h2>{num}</h2>
-      <button >Click Me</button>
+      <ProductCard />
     </div>
   );
 }
