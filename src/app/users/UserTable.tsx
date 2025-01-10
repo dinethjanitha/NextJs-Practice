@@ -1,3 +1,4 @@
+import { sort } from 'fast-sort';
 import React from 'react'
 
 
@@ -7,13 +8,25 @@ interface User{
   email:string,
 }
 
-const UserTable = async () => {
+interface Props{
+  sorting : string;
+}
+
+const UserTable = async ({ sorting }:Props) => {
 
   const res = await fetch("https://jsonplaceholder.typicode.com/users/" , {cache:'no-store' , next:{revalidate:10}})
   const users:User[] = await res.json();
 
+    sort(users).desc([
+    sorting === "email" ? u => u.email : u => u.name
+  ] );
+
+  console.log("===================")
+  // console.log(props)
+
   return (
     <div>
+      <h2 className='text-lg'>{sorting}</h2>
       <p>{new Date().toLocaleTimeString()}</p>
       {/* <p className='text-3xl p-8 my-auto text-white fond-blod hover:bg-sky-400 bg-blue-400'>Users</p> */}
       <table className='table'>
